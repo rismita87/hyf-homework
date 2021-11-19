@@ -1,0 +1,188 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    display: block;
+}
+
+#menu {
+    background-color: rgb(233, 230, 230);
+    background-size: cover;
+    height: 22%;
+    overflow:visible;
+}
+
+.title-1 {
+    position: relative;
+    font-size:large;
+    padding-left: 8%;
+    padding-top: 1%;
+}
+
+.title-2 {
+    position: relative;
+    font-size: medium;
+    color: rgb(182, 175, 175);
+    padding-left: 8%;
+    padding-bottom: 2%;
+    margin:0;
+    
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+.list {
+    position: relative;
+    padding-left: 8%;
+    margin: 0;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+.list li a {
+    text-decoration: none;
+}
+
+li {
+    display: inline-block;
+    padding-right: 5%;
+}
+
+.notselectedmenu {
+    color: #0c0b0b;
+}
+
+.selectedmenu {
+    color: #aaa6a6;
+}
+
+
+/*#main{
+    background-image: url("https://www.ratecompares.com/blog/wp-content/uploads/2018/10/Artificial-Intelligence-5.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 50px;
+    margin-top: 30px;
+    height: 400px;
+}*/
+
+.subpart {
+    width: 100%;
+}
+
+.responsive {
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+}
+
+.float-parent {
+    margin-left: 200px;
+    /*margin-bottom: 100px;
+    margin-top:50px;*/
+}
+
+.float-child {
+    width: 45%;
+    float: left;
+    text-align: justify;
+    padding-right: 50px;
+}
+
+.icon {
+    height: 70px;
+    width: 70px;
+    padding:5px;
+    padding-bottom: 2px;
+}
+.float-child ul a {
+    padding-right:5px;
+    padding-bottom: 5px;
+
+} 
+
+.footer-part {
+    background-color: rgb(72, 29, 228);
+    clear: both;
+}
+
+.endrow {
+    color: rgb(185, 11, 11);
+    width: 100%;
+    padding-left: 8%;
+}
+
+.column {
+    float: left;
+    width: 22%;
+    text-align: justify;
+    padding-right: 20px;
+}
+
+.column li {
+    display: block;
+    color: white;
+    overflow: hidden;
+    padding: 10px;
+    /*border-bottom: 1px solid rgb(88, 87, 87);*/
+}
+
+.bottom-border {
+    border-bottom: 1px solid rgb(88, 87, 87);
+}
+
+/* Clear floats after the columns */
+.endrow:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+@media screen and (max-width:1200px) {
+    .float-child {
+        width: 100%;
+        display: block;
+        left: 0;
+    }
+    .column {
+        width: 100%;
+        display: block;
+        left: 0;
+        overflow: hidden;
+    }
+    .float-parent {
+        margin-left: 20px;
+    }
+    .li {
+        display: block;
+    }
+    .bottom-border {
+        border-bottom: 0;
+    }
+}
+
+@media screen and (max-width:1000px){ 
+    .list li {
+            display:block;
+            padding:10px;
+      }
+}      
+ @media screen and (max-width:800px){ 
+      .float-child li {
+        
+        display:block;
+        padding:10px;
+    
+    }
+       .icon{
+        height:100px; 
+        width:100px;
+    } 
+}
