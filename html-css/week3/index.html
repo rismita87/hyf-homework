@@ -1,0 +1,169 @@
+<DOCTYPE html>
+  <html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width" , initial-scale=1.0>
+    <title> week_3_assignment</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <style>
+      .progressbar {
+        width: 0%;
+        height: 50px;
+        background: rgb(70, 68, 68);
+        position: relative;
+        animation: mymove 3s;
+        animation-fill-mode: forwards;
+      }
+
+      .frame_progressbar {
+        width: 900px;
+        height: 50px;
+        border: 1px solid rgb(19, 18, 18);
+        background-color: rgb(226, 220, 220);
+      }
+
+      @keyframes mymove {
+        from {
+          left: 0px;
+        }
+
+        to {
+          left: 0px;
+          width: 25%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!--
+          date:22.11.2021
+          name: Rismita Ghosh Sarkar
+          Description:This is the header part of the page with logo and navigation.
+          Most of it will be same in all pages, the navigation for the 
+          current page will be highlighted for the respective pages.
+        -->
+      <div class="header">
+        <div class="logo">
+          <img src="" alt="Logo">
+        </div>
+        <div class="navigation">
+          <img src="" alt="Navigation">
+        </div>
+      </div>
+      <div class="main">
+        <!--
+                  Description: This is information regarding what facilities will 
+                  be provided if you sign up.
+                -->
+        <div class="information">
+          <h1> Sign up to yourcustomtailor.com</h1>
+          <p class="paragraphstyle"> We can't wait to help you improve your life-style and gain the
+            attention from people around you!
+          </p>
+          <p class="paragraphstyle"> Sign up below to save upto 70% on apparel, hand-bags and cosmetics.
+            Our agents are busy picking the best offers that match your preferences
+            and style. Every week we will send you a hand-picked selction - we just need to know
+            a few details about you first...
+          </p>
+        </div>
+        <!--
+                 Description: This is basic-information-form where one need to 
+                 fill up name, address, payment address etc. Progress bar to show
+                 the status of the progress in filling up the form on each step.
+               -->
+        <div class="form">
+          <h2> Step 1/4 - tell us who you are?</h2>
+          <form method="POST" action="contact_details.html">
+            <h3>Progress</h3>
+            <div class=frame_progressbar>
+              <div class=progressbar>
+
+              </div>
+            </div>
+            <p class="paragraphstyle">Nice to meet you. Let's spend a minute to get to know each other?
+              please enter the following:
+            </p>
+
+            <div class="table">
+              <table>
+                <tr>
+                  <td class="firstname">
+                    <level for="first-name"><strong>First name*</strong><input type="text" id="first-name"
+                        class="textinput" required></level>
+                  </td>
+                  <td class="">
+                    <level for="last-name"><strong>Last name*</strong><input type="text" id="last-name"
+                        class="textinput" required></level>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="country">
+                    <level for="country"><strong>Country*</strong>
+                     <!-- <input type="text" id="country" class="textinput"
+                        required>-->
+                        <select id="country" name="country" class="selectinput" required>
+                          <option value="Afganistan">Afghanistan</option>
+                          <option value="Albania">Albania</option>
+                          <option value="Algeria">Algeria</option>
+                          <option value="Belarus">Belarus</option>
+                          <option value="Belgium">Belgium</option>
+                          <option value="Belize">Belize</option>
+                          <option value="Cameroon">Cameroon</option>
+                          <option value="Canada">Canada</option>
+                          <option value="Canary Islands">Canary Islands</option>
+                          <option value="Denmark">Denmark</option>
+                          <option value="Djibouti">Djibouti</option>
+                          <option value="Dominica">Dominica</option>                       
+                        </select>
+                      </level>
+                  </td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>
+                    <level for="street address"><strong>Street address*</strong><input type="text" id="street address"
+                        class="textinput" required></level>
+                  </td>
+                  <td class="">
+                    <level for="post code"><strong>Post code*</strong><input type="text" id="post code"
+                        class="textinput" maxlength="4" pattern="[0-9]{4}" title="4 digits number"
+                        placeholder="numbers only" required></level>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <!--
+                            Description: This is profiledescriptiontable to include
+                            profile description level and textare.
+                          -->
+            <div class="profiledescriptiontable">
+              <div class="row">
+                <div class="column">
+                  <level for="w3review"><strong>Profile description</strong></level>
+                  <p class="short-description">At w3schools.com you will learn how to make a website.
+                    They offer free tutorials in all web development technologies.</p>
+                </div>
+                <div class="textareacolumn">
+                  <textarea id="w3review" name="w3review" rows="8" cols="87" maxlength="500"></textarea>
+                </div>
+              </div>
+            </div>
+            <!--
+                     Description: This is shipping address div to include
+                     shipping address checkbox and next step button
+                  -->
+            <div class="shippinhaddress">
+              <p class="paragraphstyle">Use the same address for billing and shipping?
+                Uncheck below to fill-out a seperate billing address.
+              </p>
+              <level for="shipping address">Shipping address*<input type="checkbox" id="shipping address"
+                  name="shipping address" required></level>
+              <button type="submit" class="button"><strong> Next step</strong></button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

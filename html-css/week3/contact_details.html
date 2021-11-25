@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width" , initial-scale=1.0>
+  <title> week_3_assignment</title>
+  <link rel="stylesheet" type="text/css" href="index.css">
+  <style>
+    .progressbar {
+      width: 25%;
+      height: 50px;
+      background: rgb(70, 68, 68);
+      position: relative;
+      animation: mymove 3s;
+      animation-fill-mode: forwards;
+    }
+
+    .frame_progressbar {
+      width: 900px;
+      height: 50px;
+      border: 1px solid rgb(19, 18, 18);
+      background-color: rgb(226, 220, 220);
+    }
+
+    @keyframes mymove {
+      from {
+        left: 0px;
+      }
+
+      to {
+        left: 0px;
+        width: 50%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <!--
+          date:22.11.2021
+          name: Rismita Ghosh Sarkar
+          Description:This is the header part of the page with logo and navigation.
+          Most of it will be same in all pages, the navigation for the 
+          current page will be highlighted for the respective pages.
+        -->
+    <div class="header">
+      <div class="logo">
+        <img src="" alt="Logo">
+      </div>
+      <div class="navigation">
+        <img src="" alt="Navigation">
+      </div>
+    </div>
+    <div class="main">
+      <!--
+               Description: This is information regarding what facilities will 
+               be provided if you sign up.
+             -->
+      <h1> Sign up to yourcustomtailor.com</h1>
+      <!--
+                 Description: This is basic-information-form where one need to 
+                 fill up name, address, payment address etc. Progress bar to show
+                 the status of the progress in filling up the form on each step.
+               -->
+      <div class="form">
+        <h2> Step 2/4 - tell us who you are?</h2>
+        <form method="POST" action="appreal_preferences.html">
+          <h3>Progress</h3>
+          <div class=frame_progressbar>
+            <div class=progressbar>
+
+            </div>
+          </div>
+          <p class="paragraphstyle">We will probably need to stay in touch somehow. Let us know
+            how we can reach you?
+          </p>
+          <div class="table">
+            <table>
+              <tr>
+                <td class="email">
+                  <level for="email"><strong>Email*</strong><input class="textinput" type="text" id="email"
+                      pattern="^([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22))*\x40([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d))*$"
+                      required></level>
+                </td>
+                <td class="phone">
+                  <level for="phone"><strong>Phone</strong><input class="textinput" type="tel" id="phone"
+                      pattern="[0-9]{8}" title="Exact 8 digits number only" placeholder="numbers only" minlength="8" maxlength="8"></level>
+                </td>
+              </tr>
+              <td class="password">
+                <level for="password"><strong>Password*</strong><input class="textinput" type="password" id="password"
+                    minlength="10" pattern="[A-Za-z]+" title="minimum 10 uppercase and lowercase letters"
+                    placeholder="letters only" required></level>
+              </td>
+              <td>
+              </td>
+              </tr>
+              </tr>
+              <td class="reenterpassword">
+                <level for="re-enter password"><strong>Re-enter password*</strong><input class="textinput"
+                    type="password" id="re-enter password" pattern="[A-Za-z]+"
+                    title="minimum 10 uppercase and lowercase letters" placeholder="letters only" minlength="10" required></level>
+              </td>
+              <td>
+              </td>
+              </tr>
+              <tr>
+                <td>
+                  Weekly news <input class="radioinput" type=radio id="news" name="news" required>
+                  Monthly news <input class="radioinput" type=radio id="news" name="news" required>
+                  Don't send me news <input class="radioinput" type=radio id="news" name="news" required>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <p class="paragraphstyle"> I want to sign up for the news letter</p>
+          <div>
+            <button type="submit" class="button"> <strong> Next step</strong></button>
+          </div>
+        </form>
+       </div>
+     </div>
+   </div>
+ </body>
+</html>

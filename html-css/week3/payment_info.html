@@ -1,0 +1,126 @@
+<DOCTYPE html>
+    <html lang="en">
+      <head>
+          <meta name="viewport" content="width=device-width" , initial-scale=1.0>
+          <title> week_3_assignment</title>
+          <link rel="stylesheet" type="text/css" href="index.css">
+          <style>
+            .progressbar {
+              width: 75%;
+              height: 50px;
+              background: rgb(70, 68, 68);
+              position: relative;
+              animation: mymove 3s;
+              animation-fill-mode: forwards;
+      
+            }
+      
+            .frame_progressbar {
+              width: 900px;
+              height: 50px;
+              border: 1px solid rgb(19, 18, 18);
+              background-color: rgb(226, 220, 220);
+      
+      
+            }
+      
+            @keyframes mymove {
+              from {
+                left: 0px;
+              }
+      
+              to {
+                left: 0px;
+                width: 95%;
+              }
+            }
+          </style>
+      </head>  
+      <body>
+        <div class="container"> 
+          <!--
+            date:22.11.2021
+            name: Rismita Ghosh Sarkar
+            Description:This is the header part of the page with logo and navigation.
+            Most of it will be same in all pages, the navigation for the 
+            current page will be highlighted for the respective pages.
+          -->
+             <div class="header">
+                 <div class="logo">
+                   <img src=""  alt="Logo">
+                 </div>
+                 <div class="navigation">
+                   <img src="" alt="Navigation" > 
+                 </div>    
+             </div>
+             <div class="main">
+                <!--
+               Description: This is information regarding what facilities will 
+               be provided if you sign up.
+             -->
+               <h1> Sign up to yourcustomtailor.com</h1>
+               <!--
+                 Description: This is basic-information-form where one need to 
+                 fill up payment card details. Progress bar to show
+                 the status of the progress in filling up the form on each step.
+               -->
+               <div class="form">
+                <h2> Step 4/4 - Payment</h2>
+               <form method="POST" action="">
+                    <h3>Progress</h3>
+                    <div class=frame_progressbar>
+                      <div class=progressbar>
+          
+                      </div>
+                    </div>
+               <p class="paragraphstyle">Please fill in your data.
+               </p>
+               <div class="table">
+                <table>
+                  <tr >
+                     <td class="nameoncard">   
+                          <level for="nameoncard"><strong>Name on card*</strong><input type="text" id="nameoncard" class="textinput" required></level>
+                     </td>
+                     <td>
+                     </td>
+                   </tr>
+                   <tr>
+                      <td class="cardtype">  
+                        <level for="cardtype"><strong>Card type*</strong><input type="text" id="cardtype" class="textinput" required></level>
+                       </td>
+                      <td></td>
+                   </tr> 
+                   <tr>
+                     <td>
+                          <level for="cardnumber"><strong>Credit card number*</strong><input type="text" id="cardnumber" class="textinput" pattern="[0-9]{16}"  title="Exact 16 digits number only" placeholder="numbers only" maxlength="16" required></level>
+                     </td>
+                     <td class="">
+                          <level for="firstname"><strong>First name</strong><input type="text" id="firstnamne" class="textinput"></level>
+                     </td>
+                   </tr>
+                 </table> 
+                 <div class="cardmonthyeartable">
+                     <div class="row">
+                        <div class="monthcolumn">
+                           <level for="month"><strong>Expiry month*</strong> <input id="month" type="number" value="Month"  min="1" max="12" step="1" class="cardinput" required></level>
+                        </div>
+                        <div class="yearcolumn"> 
+                            <level for="year"><strong>Expiry year*</strong><input id="year" type="number" value="Month"  min="2021" max="2050" step="1" class="cardinput" required></level>
+                        </div>
+                     </div>
+                     <div class="row">
+                        <div class="cvvcolumn">
+                            <level for="cvv"><strong>CVV*</strong><input id="cvv" type="text"  maxlength="3" class="cardinput" pattern="[0-9]{3}" title="Exact 3 digits number only" placeholder="numbers" required></level> 
+                        </div>
+                    </div>
+                 </div>
+                 </div>
+                 <div class="submitbutton">        
+                    <button type="submit" class="button"><strong> Next step</strong></button>
+                  </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body> 
+</html> 

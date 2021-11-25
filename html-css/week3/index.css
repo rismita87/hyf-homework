@@ -1,0 +1,167 @@
+body{
+    margin: 5px auto;
+    padding:20px;
+    border:1px solid black;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 1000px;
+   
+}
+.container{
+    overflow:hidden;
+}
+.header{
+    display:flex;  
+    justify-content: space-between;
+    padding:10px;
+}
+.logo{
+    background-color: rgb(201, 196, 196);
+    height:100px;
+    width:100px;
+}  
+.navigation{
+    background-color: rgb(201, 199, 199);
+    height:100px;
+    width:300px;   
+}  
+
+.textinput{
+  padding:10px;
+  margin:10px;
+  width: 300px;
+  border: 1px solid black;
+}
+
+.selectinput{
+  padding:8px;
+  margin:10px;
+  width: 300px;
+  height:40px;
+  border: 1px solid black;
+}
+
+.radioinput{
+  width: 20px;
+}
+
+input, select, textarea{
+    margin: 10px solid black;
+  }
+  
+  .firstname{
+    padding-left:30px;
+  }
+  .country{
+    padding-left:50px;
+  }
+
+  .email{
+    padding-left:100px;
+  }
+
+  .password{
+    padding-left:70px;
+  }
+
+.short-description{
+    font-size: small;
+    font-style: italic;
+    width:200px;   
+}
+.column{
+  width:200px;
+}
+.textareacolumn{
+  float:right;
+  width:850px;
+  height:150px;
+}
+.profiledescriptiontable{
+  margin-top:50px;
+}
+.profiledescriptiontable .row{
+  display:flex;
+  height:100px;
+  margin:0;
+}
+ .button{
+    float:right;
+    width: 25%;
+    background:rgb(201, 201, 201);
+    color: black;
+    height:50px; 
+}
+.profile_description{      
+        width: 200px;
+        height: 100px;
+}
+ 
+.table{
+    margin:0;
+}
+
+.shippinhaddress, .submitbutton{
+  padding-top: 20px;
+}
+
+.apparaltable{
+  font-size: x-large;
+  font-weight:20px;
+  width:50%;
+  height: 200px;
+  padding-left: 100px;
+}
+
+.apparal{
+  padding-left: 50px;
+}
+.handbags{
+  padding-left:22px;
+}
+.shoes{
+  padding-left:16px;
+}
+
+.imagecolumn{
+  border: 1px solid black;
+  background-color: rgb(238, 234, 234);
+  height:150px;
+  width:150px; 
+}
+.apparalimagetable .row{
+  display:flex;
+  justify-content: space-around;
+  padding:40px;
+}
+
+.apparalcheckbox{
+  padding-top: 160px;
+  padding-left:80px;
+}
+.paragraphstyle{
+  font-size: larger;
+}
+.nameoncard{
+  padding-left:43px;
+}
+.cardtype{
+  padding-left:74px;
+}
+.cardmonthyeartable .row{
+  display:flex;
+  padding-left:50px;
+}
+
+.cardinput{
+  padding:10px;
+  margin: 10px;
+  width: 75px;
+  border: 1px solid black;
+}
+
+.yearcolumn{
+   padding-left:40px;
+}
+.cvvcolumn{
+  padding-left:70px;
+}

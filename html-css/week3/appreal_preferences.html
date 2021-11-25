@@ -1,0 +1,178 @@
+<DOCTYPE html>
+  <html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width" , initial-scale=1.0>
+    <title> week_3_assignment</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <style>
+      .progressbar {
+        width: 50%;
+        height: 50px;
+        background: rgb(70, 68, 68);
+        position: relative;
+        animation: mymove 3s;
+        animation-fill-mode: forwards;
+      }
+
+      .frame_progressbar {
+        width: 900px;
+        height: 50px;
+        border: 1px solid rgb(19, 18, 18);
+        background-color: rgb(226, 220, 220);
+      }
+
+      @keyframes mymove {
+        from {
+          left: 0px;
+        }
+
+        to {
+          left: 0px;
+          width: 75%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <!--
+            date:22.11.2021
+            name: Rismita Ghosh Sarkar
+            Description:This is the header part of the page with logo and navigation.
+            Most of it will be same in all pages, the navigation for the 
+            current page will be highlighted for the respective pages.
+          -->
+      <div class="header">
+        <div class="logo">
+          <img src="" alt="Logo">
+        </div>
+        <div class="navigation">
+          <img src="" alt="Navigation">
+        </div>
+      </div>
+      <!--
+                   Description: This is apparal preferences form where one can select
+                    their preferences. 
+                   Progress bar to show the status of the progress
+                    in filling up the form on each step.
+                 -->
+      <div class="form">
+        <h2> Step 3/4 - tell us who you are?</h2>
+        <form method="POST" action="payment_info.html">
+          <!-- 
+                            Description: Progress bar to show the status of the progress
+                            in filling up the form on each step.
+                           -->
+          <h3>Progress</h3>
+          <div class=frame_progressbar>
+            <div class=progressbar>
+
+            </div>
+          </div>
+          <!-- 
+                            Description: This is apparaltable which contains
+                            checkboxs to select preferences like Apparal, 
+                            Jewlry, Accessories etc.
+                           -->
+          <p class="paragraphstyle">What kind of items are interested in offers on?</p>
+          <div>
+            <table class="apparaltable">
+              <tr>
+                <td class="apparal">
+                  <level for="apparal">Apparal<input type="checkbox" id="apparal" name="apparal"></level>
+                </td>
+                <td class="jewelry">
+                  <level for="jewelry">Jewelry<input type="checkbox" id="jewelry" name="jewelry"></level>
+                </td>
+              </tr>
+              <tr>
+                <td class="accessories">
+                  <level for="accessories">Accessories<input type="checkbox" id="accessories" name="accessories">
+                  </level>
+                </td>
+                <td class="shoes">
+                  <level for="shoes">Shoes<input type="checkbox" id="shoes" name="shoes"></level>
+                </td>
+              </tr>
+              <tr>
+                <td class="handbags">
+                  <level for="handbags">Handbags<input type="checkbox" id="handbags" name="handbags"></level>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <!-- 
+                            Description: This is apparalimagetable which contains
+                            images and checkboxs to selected preferences like Apparal, 
+                            Jewlry, Accessories etc.
+                           -->
+          <p class="paragraphstyle"> Choose the images that best resembles your style</p>
+          <div class="apparalimagetable">
+            <div class="row">
+              <div class="imagecolumn">
+                <!--<img src=""  alt="">-->
+                <div class="apparalcheckbox">
+                  <level for="">Select<input type="checkbox" id="" name=""></level>
+                </div>
+              </div>
+              <div class="imagecolumn">
+                <!--<img src=""  alt="">-->
+                <div class="apparalcheckbox">
+                  <level for="">Select<input type="checkbox" id="" name=""></level>
+                </div>
+              </div>
+              <div class="imagecolumn">
+                <!--<img src=""  alt="">-->
+                <div class="apparalcheckbox">
+                  <level for="">Select<input type="checkbox" id="" name=""></level>
+                </div>
+              </div>
+              <div class="imagecolumn">
+                <!--<img src=""  alt="">-->
+                <div class="apparalcheckbox">
+                  <level for="">Select<input type="checkbox" id="" name=""></level>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="imagecolumn">
+                <!--<img src=""  alt="">-->
+                <div class="apparalcheckbox">
+                  <level for="">Select<input type="checkbox" id="" name=""></level>
+                </div>
+              </div>
+              <div class="imagecolumn">
+                <!--<img src=""  alt="">-->
+                <div class="apparalcheckbox">
+                  <level for="">Select<input type="checkbox" id="" name=""></level>
+                </div>
+              </div>
+              <div class="imagecolumn">
+                <!--<img src=""  alt="">-->
+                <div class="apparalcheckbox">
+                  <level for="">Select<input type="checkbox" id="" name=""></level>
+                </div>
+              </div>
+              <div class="imagecolumn">
+                <!--<img src=""  alt="">-->
+                <div class="apparalcheckbox">
+                  <level for="">Select<input type="checkbox" id="" name=""></level>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+      <!--
+                       Description: This is submitbutton div to go to
+                        next step
+                    -->
+      <div class="submitbutton">
+        <button type="submit" class="button"> <strong> Next step</strong></button>
+      </div>
+      </form>
+    </div>
+    </div>
+  </body>
+ </html>
