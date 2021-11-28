@@ -1,3 +1,4 @@
+add color: yellow
 add color: red
 add color: blue
 add color: green
