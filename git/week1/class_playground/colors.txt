@@ -1,2 +1,3 @@
 add color: red
 add color: blue
+add color: yellow
