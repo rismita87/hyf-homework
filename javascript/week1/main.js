@@ -52,3 +52,47 @@ if (housePrice > houseCosts) {
 } else {
   console.log("Julia is paying proper price for the house."); // when housePrice equals to houseCosts
 }
+
+//Ez Namey (Startup name generator) Optional
+
+let firstWord = [
+  "Awesome",
+  "Realistic",
+  "Upbeat",
+  "Easy",
+  "Freidly",
+  "Capable",
+  "Smart",
+  "Experienced",
+  "Stategic",
+  "Supportive",
+];
+let secondWord = [
+  "Startup",
+  "Company",
+  "Co-operation",
+  "Collaboration",
+  "Agency",
+  "Office",
+  "Enterprise",
+  "Firm",
+  "Venture",
+  "Society",
+];
+let startUpName; // variable for startup name combinations
+// 1st for loop to itterate over elements of firstName array and 2nd for loop to itterate over elements of secondName array
+
+for (let i = 0; i < firstWord.length; i++) {
+  for (let j = 0; j < secondWord.length; j++) {
+    startUpName = firstWord[i] + " " + secondWord[j];
+    console.log(
+      ' "The startup: ' +
+        '"' +
+        startUpName +
+        '"' +
+        " contains " +
+        startUpName.length +
+        ' characters."'
+    );
+  }
+}
