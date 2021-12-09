@@ -20,3 +20,35 @@ if (shouldShowResultInDogYears) {
     "Your dog will be " + dogYear + " human years old in " + dogYearFuture
   );
 }
+
+//Housey pricey (A house price estimator)
+
+let houseDimentions = []; // to include house dimentions as array elements
+let volumeInM3; // parameter to calculate housevolume in meter3
+let housePrice; // calculated house price using given formula
+let houseCosts; // offered house price
+
+// for Peter's house
+houseDimentions = [10, 8, 10, 100]; // house's dimentions in order height, width & depth in meters and garden size in meters2
+volumeInM3 = houseDimentions[0] * houseDimentions[1] * houseDimentions[2];
+housePrice = volumeInM3 * 2.5 * 1000 + houseDimentions[3] * 300;
+houseCosts = 2500000;
+if (housePrice > houseCosts) {
+  console.log("Peter is paying too little for the house.");
+} else if (housePrice < houseCosts) {
+  console.log("Peter is paying too much for the house.");
+} else {
+  console.log("Peter is paying proper price for the house."); // when housePrice equals to houseCosts
+}
+// for Julia's house
+houseDimentions = [8, 5, 11, 70]; // house's dimentions in order height, width & depth in meters and garden size in meters2
+volumeInM3 = houseDimentions[0] * houseDimentions[1] * houseDimentions[2];
+housePrice = volumeInM3 * 2.5 * 1000 + houseDimentions[3] * 300;
+houseCosts = 1000000;
+if (housePrice > houseCosts) {
+  console.log("Julia is paying too little for the house.");
+} else if (housePrice < houseCosts) {
+  console.log("Julia is paying too much for the house.");
+} else {
+  console.log("Julia is paying proper price for the house."); // when housePrice equals to houseCosts
+}
