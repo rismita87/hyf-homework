@@ -83,3 +83,19 @@ function getEventWeekday(eventdayNumber) {
 
 today("Sunday");
 getEventWeekday(8);
+
+// Weather wear
+function todaysTemperature(temperature) {
+  if (temperature <= 0) {
+    console.log("It might be snowing!! wear your snow jacket and snow boot.");
+  } else if (temperature >= 1 && temperature < 6) {
+    console.log("It's pretty cold!! get ready with winter wear.");
+  } else if (temperature >= 6 && temperature < 18) {
+    console.log(
+      "It's not too cold not too hot, a light winter jacket would be fine."
+    );
+  } else {
+    console.log(" It's pretty warm!! T-shirt and shorts would be perfect.");
+  }
+}
+todaysTemperature(8);
