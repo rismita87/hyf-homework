@@ -99,3 +99,48 @@ function todaysTemperature(temperature) {
   }
 }
 todaysTemperature(8);
+
+// Student manager
+const class07Students = [];
+function addStudentToClass(studentName) {
+  let i = 0;
+  for (; i < class07Students.length; i++) {
+    if (studentName === class07Students[i]) {
+      console.log("Student " + studentName + " is already in the class.");
+      break;
+    } else {
+      continue;
+    }
+  }
+  if (i === class07Students.length) {
+    if (class07Students.length > 5) {
+      if (studentName === "Queen") {
+        class07Students.push(studentName);
+        console.log(class07Students);
+      } else {
+        console.log("Cannot add more students to class 07");
+      }
+    } else {
+      class07Students.push(studentName);
+      console.log(class07Students);
+    }
+  }
+}
+
+addStudentToClass("Rismita");
+addStudentToClass("Rismita");
+addStudentToClass("Abhirup");
+addStudentToClass("Aaditri");
+addStudentToClass("Amrita");
+addStudentToClass("Neo");
+addStudentToClass("Neo");
+addStudentToClass("Leo");
+addStudentToClass("Sudip");
+addStudentToClass("Queen");
+addStudentToClass("Uma");
+
+function getNumberOfStudents() {
+  let studentStrength = class07Students.length;
+  console.log(studentStrength);
+}
+getNumberOfStudents();
