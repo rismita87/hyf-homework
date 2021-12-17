@@ -144,3 +144,43 @@ function getNumberOfStudents() {
   console.log(studentStrength);
 }
 getNumberOfStudents();
+
+//Candy helper
+
+let boughtCandyPrices = [];
+let amountToSpend = Math.random() * 100;
+console.log("Amount to spend: " + amountToSpend);
+
+function addcandy(candyType, weight) {
+  switch (candyType) {
+    case "Sweet":
+      boughtCandyPrices.push(weight * 0.5);
+      break;
+    case "Chocolate":
+      boughtCandyPrices.push(weight * 0.7);
+      break;
+    case "Tofee":
+      boughtCandyPrices.push(weight * 1.1);
+      break;
+    case "Chewing-gum":
+      boughtCandyPrices.push(weight * 0.03);
+      break;
+  }
+}
+function canBuyMoreCandy() {
+  let totalBoughtCandyPrices = 0;
+  for (let i = 0; i < boughtCandyPrices.length; i++) {
+    totalBoughtCandyPrices = totalBoughtCandyPrices + boughtCandyPrices[i];
+  }
+  console.log("Total amount: " + totalBoughtCandyPrices);
+  if (totalBoughtCandyPrices < amountToSpend) {
+    console.log("You can buy more, so please do!");
+  } else {
+    console.log("Enough candy for you!");
+  }
+}
+
+addcandy("Sweet", 20);
+canBuyMoreCandy();
+addcandy("Chocolate", 10);
+canBuyMoreCandy();
