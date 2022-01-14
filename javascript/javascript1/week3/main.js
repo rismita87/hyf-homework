@@ -151,3 +151,124 @@ function removeNote(content) {
 }
 
 console.log(removeNote("Do laundry"));
+
+//CactusIO-interactive (Smart phone usage app) optional
+const activities = [];
+var i = 0;
+function addActivity(data, activity, duration) {
+  if (data === undefined || activity === undefined || duration === undefined) {
+    return "Add some activities before calling showStatus";
+  }
+  activities.push({});
+  for (; i < activities.length; i++) {
+    activities[i].data = data;
+    activities[i].activity = activity;
+    activities[i].duration = duration;
+  }
+}
+addActivity("23-7-2018", "Amazon Prime", 10);
+addActivity("23-7-2018", "Youtube", 30);
+addActivity("24-7-2018", "MTV", 30);
+addActivity("24-7-2018", "Youtube", 30);
+addActivity("26-7-2018", "Amazon Prime", 30);
+console.log(activities);
+
+var totalUsage = 0;
+var j = 0; // extra feature to calculate with how many activities the usageLimite is reached.
+const usageLimit = 120;
+function showStatus() {
+  const totalActivities = activities.length;
+  for (var i = 0; i < activities.length; i++) {
+    totalUsage += activities[i].duration;
+    if (j === 0) {
+      if (totalUsage > usageLimit || totalUsage === usageLimit) {
+        var limitOfActivity = i + 1;
+        console.log(
+          "You have reached your usage limit with first " +
+            limitOfActivity +
+            " activities of your activities list, no more smartphoning for you!"
+        );
+        j = j + 1;
+      }
+    }
+  }
+  return [totalActivities, totalUsage];
+}
+const showMyStatus = showStatus(activities);
+console.log(
+  "You have added " +
+    showMyStatus[0] +
+    " activities. They amount to " +
+    showMyStatus[1] +
+    " min. of usage"
+);
+//FOR OPTIONAL FEATURES:
+const newActivities = [];
+var i = 0;
+var today = new Date();
+var todaysDate =
+  today.getDate() + "-" + (today.getMonth() + 1) + "-" + today.getFullYear();
+function addActivityWithoutDate(activity, duration) {
+  if (activity === undefined || duration === undefined) {
+    return "Add some activities before calling showStatus";
+  }
+  newActivities.push({});
+  for (; i < newActivities.length; i++) {
+    newActivities[i].date = todaysDate;
+    newActivities[i].activity = activity;
+    newActivities[i].duration = duration;
+  }
+}
+addActivityWithoutDate("Youtube", 30);
+addActivityWithoutDate("Facebook", 40);
+addActivityWithoutDate("News", 30);
+
+console.log(newActivities);
+
+var k = 0;
+function newShowStatus() {
+  for (i = 0; i < newActivities.length; i++) {
+    if (newActivities[i].date === todaysDate) {
+      k = k + 1;
+    }
+  }
+  return k + " number of activities on " + todaysDate;
+}
+console.log(newShowStatus());
+
+function userSpentMostTime() {
+  var array = activities;
+  var newArray = [];
+  j = 0;
+  while (array.length != 0) {
+    var anotherArray = [];
+    k = 0;
+    newArray.push({});
+    newArray[j].duration = 0;
+    for (i = 0; i < array.length; i++) {
+      if (array[i].activity === array[0].activity) {
+        newArray[j].activity = array[i].activity;
+        newArray[j].duration += array[i].duration;
+      } else {
+        anotherArray.push({});
+        anotherArray[k].activity = array[i].activity;
+        anotherArray[k].duration = array[i].duration;
+        k++;
+      }
+    }
+    j++;
+    array = anotherArray;
+  }
+  var temp_var = 0;
+  var most_used_activity = "";
+  for (x = 0; x < newArray.length; x++) {
+    if (newArray[x].duration > temp_var) {
+      temp_var = newArray[x].duration;
+      most_used_activity = newArray[x].activity;
+    } else {
+      continue;
+    }
+  }
+  return "Most used activity is: " + most_used_activity;
+}
+console.log(userSpentMostTime());
