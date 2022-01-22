@@ -2,13 +2,13 @@ const nameList = [];
 const listOfToDos = [];
 function getReply(command) {
   const nameArray = [
-    ["Hello", "my", "name", "is"],
-    ["What", "is", "my", "name?"],
-    ["Add", "to", "my", "todo"],
-    ["Remove", "from", "my", "todo"],
-    ["What", "is", "on", "my", "todo?"],
-    ["What", "day", "is", "it", "today?"],
-    ["Set", "a", "timer", "for", "seconds"],
+    ["hello", "my", "name", "is"],
+    ["what", "is", "my", "name"],
+    ["add", "to", "my", "to-do"],
+    ["remove", "from", "my", "to-do"],
+    ["what", "is", "on", "my", "to-do"],
+    ["what", "day", "is", "it", "today"],
+    ["set", "a", "timer", "for", "seconds"],
   ];
 
   for (let i = 0; i < nameArray.length; i++) {
@@ -111,13 +111,13 @@ function getReply(command) {
   }
 }
 
-console.log(getReply("Hello my name is Benjamin"));
-console.log(getReply("Hello my name is Benjamin"));
-console.log(getReply("What is my name?"));
-console.log(getReply("Add fishing to my todo"));
-console.log(getReply("Add singing in the shower to my todo"));
-console.log(getReply("Remove fishing from my todo"));
-console.log(getReply("What is on my todo?"));
-console.log(getReply("What day is it today?"));
-console.log(getReply("What is 4 / 200"));
-console.log(getReply("Set a timer for 4 seconds"));
+console.log(getReply("hello my name is Benjamin"));
+console.log(getReply("hello my name is Benjamin"));
+console.log(getReply("what is my name"));
+console.log(getReply("add fishing to my to-do"));
+console.log(getReply("add singing in the shower to my to-do"));
+console.log(getReply("remove fishing from my to-do"));
+console.log(getReply("what is on my to-do"));
+console.log(getReply("what day is it today"));
+console.log(getReply("what is 4 / 200"));
+console.log(getReply("set a timer for 4 seconds"));
