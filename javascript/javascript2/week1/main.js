@@ -35,3 +35,56 @@ const myArray = ["å", "ø", "æ"];
 console.log(notThisFunctionName(danishWords));
 console.log(notThisFunctionName(danishString));
 console.log(notThisFunctionName(danishString2));
+
+//Spirit animal name generator
+const body = document.querySelector("body");
+const myButton = document.querySelector("button");
+myButton.innerText = "click here";
+const spiritAnimalArray = [
+  "The confident bear",
+  "The leading lion",
+  "The strong willed tiger",
+  "The clever fox",
+  "The loyal wolf",
+  "The peaceful panda",
+  "The crying butterfly",
+  "The wise horse",
+  "The compationate deer",
+  "The patient eagle",
+];
+let newSpiritAnimalArray = [...spiritAnimalArray];
+function getInputValue() {
+  var inputValue = document.getElementById("myInput").value;
+  if (inputValue) {
+    const randomAnimal = Math.floor(Math.random() * spiritAnimalArray.length);
+    document.getElementById("displayPara").innerHTML =
+      "<b>Name: </b>" +
+      inputValue +
+      ": " +
+      inputValue +
+      " - " +
+      spiritAnimalArray[randomAnimal];
+    document.getElementById("firstSelection").disabled = true;
+    newSpiritAnimalArray.splice([randomAnimal], 1);
+  } else {
+    document.getElementById("displayPara").innerHTML = " Enter your name first";
+  }
+}
+
+function getNewInputValue() {
+  var inputValue = document.getElementById("myInput").value;
+  if (inputValue) {
+    const newRandomAnimal = Math.floor(
+      Math.random() * newSpiritAnimalArray.length
+    );
+    document.getElementById("displayPara").innerHTML =
+      "<b>Name: </b>" +
+      inputValue +
+      ": " +
+      inputValue +
+      " - " +
+      newSpiritAnimalArray[newRandomAnimal];
+  } else {
+    document.getElementById("displayPara").innerHTML = " Enter your name first";
+  }
+}
