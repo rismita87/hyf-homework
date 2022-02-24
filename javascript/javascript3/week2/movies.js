@@ -46,3 +46,36 @@ promiseThatResolveAfterSetTime(2)
     console.log("I am called asynchronously"); // logged out after 4 seconds
   })
   .catch(() => console.log("error"));
+
+//REWRITING TIME
+
+//Rewritting setTimeOut to Promise
+function setTimeoutPromise(resolveAfterTime) {
+  return new Promise((resolve, reject) => {
+    setTimeout(function () {
+      resolve(" ");
+    }, resolveAfterTime);
+  });
+}
+setTimeoutPromise(4000)
+  .then(() => {
+    console.log("I am called after some seconds"); // logged out after 4 seconds
+  })
+  .catch(() => console.log("error"));
+
+//Rewritting navigator.geolocation.getCurrentPosition to Promise
+function getCurrentLocation() {
+  return new Promise((resolve, reject) =>
+    navigator.geolocation.getCurrentPosition(resolve, reject)
+  );
+}
+
+getCurrentLocation()
+  .then((position) => {
+    // called when the users position is found
+    console.log(position);
+  })
+  .catch((error) => {
+    // called if there was an error getting the users location
+    console.log(error);
+  });
