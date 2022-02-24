@@ -29,3 +29,20 @@ console.log("The list of bad movies: ");
 console.log(listOfBadMovies);
 console.log("The list of bad movies since 2000: ");
 console.log(listOfBadMoviesSince2000);
+
+// PROMISE THAT RESOLVES AFTER SET TIME
+
+async function promiseThatResolveAfterSetTime(resolveAfter) {
+  let promise = new Promise((resolve, reject) => {
+    setTimeout(function () {
+      resolve(" ");
+    }, resolveAfter * 1000);
+  });
+  let result = await promise;
+  return result;
+}
+promiseThatResolveAfterSetTime(2)
+  .then(() => {
+    console.log("I am called asynchronously"); // logged out after 4 seconds
+  })
+  .catch(() => console.log("error"));
