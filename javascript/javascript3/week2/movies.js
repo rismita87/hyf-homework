@@ -79,3 +79,36 @@ getCurrentLocation()
     // called if there was an error getting the users location
     console.log(error);
   });
+
+// FETCHING AND WAITING
+
+//Using promises and .then.
+let listOfAstronoutName = [];
+let functionUsingPromises = fetch(
+  "http://api.open-notify.org/astros.json"
+).then((response) => response.json());
+
+setTimeout(function () {
+  functionUsingPromises
+    .then((element) => {
+      element.people.forEach((eachPeople) => {
+        listOfAstronoutName.push(eachPeople.name);
+      });
+    })
+    .catch(() => console.log("error"));
+  console.log(listOfAstronoutName);
+}, 3000);
+
+// Using async/await
+let listOfAstroName = [];
+setTimeout(function () {
+  const functionUsingAsyncAwait = (async function () {
+    const data = await fetch("http://api.open-notify.org/astros.json");
+    const result = await data.json();
+    result.people.forEach((eachPeople) => {
+      listOfAstroName.push(eachPeople.name);
+    });
+    return listOfAstroName;
+  })();
+  console.log(functionUsingAsyncAwait);
+}, 3000);
