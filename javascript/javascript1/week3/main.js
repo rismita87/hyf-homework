@@ -10,8 +10,8 @@ const names = [
   "Tala",
 ];
 const nameToRemove = "Ahmad";
-for (var i = 0; i < names.length; i++) {
-  if (names[i] === nameToRemove) {
+for (let i = 0; i < names.length; i++) {
+  if (names[i] == nameToRemove) {
     names.splice(i, 1);
     i--;
   }
@@ -24,15 +24,16 @@ const travelInformation = {
   destinationDistance: 567,
 };
 
-function travelTimeCalculation() {
+function travelTimeCalculation(distance, speed) {
   var hours = (distance - (distance % speed)) / speed;
   var minutes = ((distance % speed) * 60) / speed;
   return [hours, minutes];
 }
-let distance = travelInformation.destinationDistance;
-let speed = travelInformation.speed;
-const travelTime = travelTimeCalculation(travelInformation);
-console.log(travelTime[0] + " hours and " + travelTime[1] + " minutes.");
+const travelTime = travelTimeCalculation(
+  travelInformation.destinationDistance,
+  travelInformation.speed
+);
+console.log(`${travelTime[0]}  hours and  ${travelTime[1]}  minutes.`);
 
 //Series duration of my life
 const seriesDurations = [
