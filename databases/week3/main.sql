@@ -1,3 +1,5 @@
+-- Create database
+CREATE DATABASE dbweek3HW DEFAULT CHARACTER SET = 'utf8mb4';
 USE dbweek3HW;
 --Data model
 CREATE TABLE meal (
@@ -71,7 +73,7 @@ WHERE
 UPDATE
   meal
 SET
-  max_reservations = "20",
+  max_reservations = "2",
   price = "95"
 WHERE
   meal.id = 2;
@@ -183,18 +185,34 @@ SELECT
 FROM
   meal
 WHERE
-  meal.price > 80;
+  meal.price < 80;
 --2.Get meals that still has available reservations
 SELECT
-  meal.id "meal id",
-  meal.title "meal title",
-  reservation.number_of_guests "reservation number"
+  meal.id "meal_id",
+  reservation_status.meal_count "meal_reservation_status",
+  meal.max_reservations "meal-Max-Reservation"
 FROM
-  meal
-  INNER JOIN reservation ON meal.id = reservation.meal_id
+  (
+    SELECT
+      count(reservation.meal_id) "meal_count",
+      reservation.meal_id "meal_id"
+    FROM
+      reservation
+    GROUP BY
+      reservation.meal_id
+  ) reservation_status
+  INNER JOIN meal ON meal.id = reservation_status.meal_id
 WHERE
-  meal.max_reservations > reservation.number_of_guests;
---3.Get meals that partially match a title.
+  meal.max_reservations > reservation_status.meal_count;
+--   meal.id "meal id",
+  --   meal.title "meal title",
+  --   reservation.number_of_guests "reservation number"
+  -- FROM
+  --   meal
+  --   INNER JOIN reservation ON meal.id = reservation.meal_id
+  -- WHERE
+  --   meal.max_reservations > reservation.number_of_guests;
+  --3.Get meals that partially match a title.
   -- Rød grød med will match the meal with the
   --title Rød grød med fløde
 SELECT
