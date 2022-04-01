@@ -27,7 +27,8 @@ app.get("/large-meals", async (request, response) => {
     (meal) => meal.maxNumberOfGuests > 5
   );
   response.send(largeMeals); // returns an array and the test is passing.
-  //response.send({largeMeals}); to get response with the json for
+  //response.send({largeMeals});
+  //to get response with the json for
   //all the meals (including it's reviews) that can fit lots of people
 });
 app.get("/meal", async (request, response) => {
@@ -37,7 +38,8 @@ app.get("/meal", async (request, response) => {
 
 app.get("/reservations", async (request, response) => {
   response.send(reservations); // returns an array and the test is passing.
-  //response.send({ reservations }); //to get response with the json for all reservations
+  //response.send({ reservations });
+  //to get response with the json for all reservations
 });
 app.get("/reservation", async (request, response) => {
   let reservationsIndex = Math.floor(Math.random() * reservations.length);
