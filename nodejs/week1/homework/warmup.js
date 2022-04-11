@@ -9,10 +9,10 @@ class Circle {
     return 2 * this.radius;
   }
   getCircumference() {
-    return 2 * 3.14 * this.radius;
+    return 2 * Math.PI * this.radius;
   }
   getArea() {
-    return 3.14 * this.radius * this.radius;
+    return Math.PI * this.radius * this.radius;
   }
 }
 
