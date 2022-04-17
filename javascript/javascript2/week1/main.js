@@ -1,40 +1,41 @@
-//Find the shortest word
-function notThisFunctionName(parameter) {
-  if (Array.isArray(parameter)) {
-    let word = parameter[0];
-    for (let l = 0; l < parameter.length; l++) {
-      if (word.length > parameter[l].length) {
-        word = parameter[l];
-      }
+//Finds the shortest word
+function getShortestWord(parameter) {
+  let word = parameter[0];
+  for (let l = 0; l < parameter.length; l++) {
+    if (word.length > parameter[l].length) {
+      word = parameter[l];
     }
-    return "shortest word is '" + word + "'";
-  } else {
-    //Find and count the Danish letters
-    let total = 0;
-    let myList = [];
-    for (let i = 0; i < myArray.length; i++) {
-      let k = 0;
-      for (let j = 0; j < parameter.length; j++) {
-        if (myArray[i] === parameter[j]) {
-          k += 1;
-        }
-      }
-      if (k > 0) {
-        myList.push({ [myArray[i]]: k });
-        total += k;
-      }
-    }
-    myList.unshift({ Total: total });
-    return myList;
   }
+  return "shortest word is '" + word + "'";
 }
-const danishWords = ["bil", "plante", "kaffe", "bog", "ø", "planetarium"];
+
+//Finds danish letter count
+function getDanishLetterCount(parameter) {
+  let total = 0;
+  let myList = [];
+  for (let i = 0; i < myArray.length; i++) {
+    let k = 0;
+    for (let j = 0; j < parameter.length; j++) {
+      if (myArray[i] === parameter[j]) {
+        k += 1;
+      }
+    }
+    if (k > 0) {
+      myList.push({ [myArray[i]]: k });
+      total += k;
+    }
+  }
+  myList.unshift({ Total: total });
+  return myList;
+}
+
+const danishWords = ["bil1111", "plante", "kaffe", "bog", "ø", "planetarium"];
 const danishString = "Jeg hør en blå bil";
 const danishString2 = "Blå grød med røde bær";
 const myArray = ["å", "ø", "æ"];
-console.log(notThisFunctionName(danishWords));
-console.log(notThisFunctionName(danishString));
-console.log(notThisFunctionName(danishString2));
+console.log(getShortestWord(danishWords));
+console.log(getDanishLetterCount(danishString));
+console.log(getDanishLetterCount(danishString2));
 
 //Spirit animal name generator
 const body = document.querySelector("body");
@@ -54,7 +55,7 @@ const spiritAnimalArray = [
 ];
 let newSpiritAnimalArray = [...spiritAnimalArray];
 function getInputValue() {
-  var inputValue = document.getElementById("myInput").value;
+  let inputValue = document.getElementById("myInput").value;
   if (inputValue) {
     const randomAnimal = Math.floor(Math.random() * spiritAnimalArray.length);
     document.getElementById("displayPara").innerHTML =
