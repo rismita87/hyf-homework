@@ -91,7 +91,7 @@ router.get("/", async (request, response) => {
 router.get("/:id", async (request, response) => {
   const id = request.params.id;
   if (isNaN(id)) {
-    //respond with status 400 when  is not parseable
+    //responds with status 400 when the query is not parseable
     response.status(400).send("wrong id format");
   } else if (id) {
     const mealWithInputId = meals.find((meal) => meal.id == id);
