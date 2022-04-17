@@ -11,8 +11,16 @@ router.get("/", async (request, response) =>
 //Respond with the json for the review with the corresponding id *
 router.get("/:id", async (request, response) => {
   const id = request.params.id;
-  if (id) {
-    response.send(reviews[id - 1]);
+  if (isNaN(id)) {
+    //respond with status 400 when  is not parseable
+    response.status(400).send("wrong id format");
+  } else if (id) {
+    const reviewWithInputId = reviews.find((review) => review.id == id);
+    response.send(
+      reviewWithInputId
+        ? reviewWithInputId
+        : "No reservation with this id number!!"
+    );
   }
 });
 

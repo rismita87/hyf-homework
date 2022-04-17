@@ -12,8 +12,18 @@ router.get("/", async (request, response) =>
 //Respond with the json for the reservation with the corresponding id *
 router.get("/:id", async (request, response) => {
   const id = request.params.id;
-  if (id) {
-    response.send(reservations[id - 1]);
+  if (isNaN(id)) {
+    //respond with status 400 when  is not parseable
+    response.status(400).send("wrong id format");
+  } else if (id) {
+    const reservationWithInputId = reservations.find(
+      (reservation) => reservation.id == id
+    );
+    response.send(
+      reservationWithInputId
+        ? reservationWithInputId
+        : "No reservation with this id number!!"
+    );
   }
 });
 module.exports = router;
