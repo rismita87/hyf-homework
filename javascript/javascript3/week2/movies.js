@@ -2,7 +2,7 @@
 
 const listOfBadMovies = [];
 const listOfBadMoviesSince2000 = [];
-let promise = fetch(
+const promise = fetch(
   "https://gist.githubusercontent.com/pankaj28843/08f397fcea7c760a99206bcb0ae8d0a4/raw/02d8bc9ec9a73e463b13c44df77a87255def5ab9/movies.json"
 ).then((response) => response.json());
 //1. To creat an array of bad movies with rating < 4
@@ -33,13 +33,12 @@ console.log(listOfBadMoviesSince2000);
 // PROMISE THAT RESOLVES AFTER SET TIME
 
 async function promiseThatResolveAfterSetTime(resolveAfter) {
-  let promise = new Promise((resolve, reject) => {
+  const promise = new Promise((resolve, reject) => {
     setTimeout(function () {
       resolve(" ");
     }, resolveAfter * 1000);
   });
-  let result = await promise;
-  return result;
+  return promise;
 }
 promiseThatResolveAfterSetTime(2)
   .then(() => {
@@ -84,23 +83,22 @@ getCurrentLocation()
 
 //Using promises and .then.
 let listOfAstronoutName = [];
-let functionUsingPromises = fetch(
-  "http://api.open-notify.org/astros.json"
-).then((response) => response.json());
 
 setTimeout(function () {
-  functionUsingPromises
+  fetch("http://api.open-notify.org/astros.json")
+    .then((response) => response.json())
     .then((element) => {
       element.people.forEach((eachPeople) => {
         listOfAstronoutName.push(eachPeople.name);
       });
     })
+    .then(() => console.log(listOfAstronoutName))
     .catch(() => console.log("error"));
-  console.log(listOfAstronoutName);
 }, 3000);
 
 // Using async/await
 let listOfAstroName = [];
+
 setTimeout(function () {
   const functionUsingAsyncAwait = (async function () {
     const data = await fetch("http://api.open-notify.org/astros.json");
@@ -108,7 +106,6 @@ setTimeout(function () {
     result.people.forEach((eachPeople) => {
       listOfAstroName.push(eachPeople.name);
     });
-    return listOfAstroName;
   })();
-  console.log(functionUsingAsyncAwait);
+  functionUsingAsyncAwait.then(() => console.log(listOfAstroName));
 }, 3000);

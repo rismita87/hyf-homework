@@ -20,6 +20,7 @@
 
       box.style.left = x;
       box.style.top = y;
+      console.log("Start Position Set x " + x + " y " + y);
     });
   }
 
@@ -35,6 +36,7 @@
     const allTargetsFulfilled = [...targets].every((target) =>
       target.classList.contains("fulfilled")
     );
+    console.log(allTargetsFulfilled);
     if (allTargetsFulfilled) {
       setTimeout(() => span.classList.add("shown"), 300);
     }
