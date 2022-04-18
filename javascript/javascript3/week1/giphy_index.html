@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>JS-JS3-week1-HW</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="giphy.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <h1>Giphy api</h1>
+      </header>
+      <div class="searchWordInputDiv">
+        <input type="text" id="giphyInputId" />
+      </div>
+      <div class="startButton">
+        <button id="giphySearchButton">Start!</button>
+      </div>
+      <div class="giphyNumberInputDiv">
+        <input type="number" id="giphyNumberInputId" min="1" />
+      </div>
+      <div id="imageDispayLocation"></div>
+    </main>
+    <script src="giphy.js"></script>
+    <script>
+      //while loading in chrom facing this issue :"Resolve this issue by updating the attributes of the cookie:
+      //->Specify SameSite=None and Secure if the cookie should be sent in cross-site requests. This enables third-party use.
+      //->Specify SameSite=Strict or SameSite=Lax if the cookie should not be sent in cross-site requests."
+      //tried to resoled but didn't work.
+      // working fine with safari
+      /*
+      window.addEventListener("load", (event) => {
+        document.cookie = "asd='asd'; sameSite=None; Secure";
+      });*/
+    </script>
+  </body>
+</html>
