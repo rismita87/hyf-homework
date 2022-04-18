@@ -1,16 +1,15 @@
 //Using city name as input
+const cityNameKey = "myCity";
 document
   .getElementById("inputButtonId")
   .addEventListener("click", function (event) {
     (async function () {
       const weatherData = await fetch(
-        "https://api.openweathermap.org/data/2.5/weather?q=" +
-          document.getElementById("cityNameInputId").value +
-          "&appid=a9a4924b301fedae29f7f402ae447166"
+        apiUrlCreater("q=" + document.getElementById("cityNameInputId").value)
       );
       // to save the data in localstorage
       localStorage.setItem(
-        "myCity",
+        cityNameKey,
         document.getElementById("cityNameInputId").value
       );
       const weatherInfo = await weatherData.json();
@@ -25,15 +24,13 @@ function logLocationFunction() {
   navigator.geolocation.getCurrentPosition((success) =>
     (async function () {
       const weatherData = await fetch(
-        "https://api.openweathermap.org/data/2.5/weather?lat=" +
-          success.coords.latitude +
-          "&lon=" +
-          success.coords.longitude +
-          "&appid=a9a4924b301fedae29f7f402ae447166"
+        apiUrlCreater(
+          "lat=" + success.coords.latitude + "&lon=" + success.coords.longitude
+        )
       );
       const weatherInfo = await weatherData.json();
       // to save the data in localstorage
-      localStorage.setItem("myCity", weatherInfo.name);
+      localStorage.setItem(cityNameKey, weatherInfo.name);
       allWeatherData(weatherInfo);
     })()
   );
@@ -47,25 +44,34 @@ function timestampToTime(x) {
   return formatTime;
 }
 // Fuction to get weather information.
-function allWeatherData(parameter) {
-  document.getElementById("theChosenCity").innerHTML = parameter.name;
+function allWeatherData(weatherParameter) {
+  //To get city name
+  document.getElementById("theChosenCity").innerHTML = weatherParameter.name;
+  //to get the temperature
   document.getElementById("temperature").innerHTML =
-    (parameter.main.temp - 273.15).toFixed(2) + " ℃";
+    (weatherParameter.main.temp - 273.15).toFixed(2) + " ℃";
+  //to get the weather icon
   const weatherIcon =
-    "https://openweathermap.org/img/w/" + parameter.weather[0].icon + ".png";
+    "https://openweathermap.org/img/w/" +
+    weatherParameter.weather[0].icon +
+    ".png";
   document.getElementById("iconForWeatherType").innerHTML =
     '<img src = "' + weatherIcon + ' ">';
-  const windSpeedMPH = (parameter.wind.speed * 2.23694).toFixed(2);
+  //to get wind speed
+  const windSpeedMPH = (weatherParameter.wind.speed * 2.23694).toFixed(2);
   document.getElementById("windSpeed").innerHTML =
     "Wind speed: " + windSpeedMPH + " ml/h";
-  const cloudParcentage = parameter.clouds.all;
+  //to get cloud parcentage
+  const cloudParcentage = weatherParameter.clouds.all;
   document.getElementById("howCloudyItIs").innerHTML =
     "Cloudy: " + cloudParcentage + "%";
+  //to get sunrise time
   document.getElementById("sunriseTime").innerHTML =
-    "Sunrise: " + timestampToTime(parameter.sys.sunrise);
+    "Sunrise: " + timestampToTime(weatherParameter.sys.sunrise);
+  // to get sunset time
   document.getElementById("sunsetTime").innerHTML =
-    "Sunset: " + timestampToTime(parameter.sys.sunset);
-  const body = document.querySelector("body");
+    "Sunset: " + timestampToTime(weatherParameter.sys.sunset);
+  //to get the background image
   document.getElementById("container").style.backgroundImage =
     "url('https://i.pinimg.com/originals/9e/0f/fd/9e0ffd65930d4bb80764d56b42f5b8a0.jpg')";
 
@@ -73,18 +79,21 @@ function allWeatherData(parameter) {
 }
 
 window.addEventListener("load", (event) => {
-  console.log("page is fully loaded");
-  const city = localStorage.getItem("myCity");
+  const city = localStorage.getItem(cityNameKey);
   if (city !== "") {
     //console.log("City name" + city);
     (async function () {
-      const weatherData = await fetch(
-        "https://api.openweathermap.org/data/2.5/weather?q=" +
-          city +
-          "&appid=a9a4924b301fedae29f7f402ae447166"
-      );
+      const weatherData = await fetch(apiUrlCreater("q=" + city));
       const weatherInfo = await weatherData.json();
       allWeatherData(weatherInfo);
     })();
   }
 });
+
+function apiUrlCreater(queryString) {
+  return (
+    "https://api.openweathermap.org/data/2.5/weather?" +
+    queryString +
+    "&appid=a9a4924b301fedae29f7f402ae447166"
+  );
+}

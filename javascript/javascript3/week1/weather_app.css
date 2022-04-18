@@ -22,10 +22,9 @@ body {
   border-color: azure;
   margin-bottom: 2%;
 }
-#inputButtonId,
-#logLocationButtonId {
+#inputButtonId {
   box-shadow: 0 4px 4px rgba(126, 123, 123, 0.5);
-  width: 12%;
+  width: 15%;
   padding-bottom: 1%;
   border-radius: 8px;
   border-color: azure;
@@ -33,6 +32,17 @@ body {
   color: rgb(5, 68, 68);
   margin-bottom: 2%;
 }
+#logLocationButtonId {
+  box-shadow: 0 4px 4px rgba(126, 123, 123, 0.5);
+  width: 20%;
+  padding-bottom: 1%;
+  border-radius: 8px;
+  border-color: azure;
+  background-color: rgb(161, 226, 226);
+  color: rgb(5, 68, 68);
+  margin-bottom: 2%;
+}
+
 #theChosenCity,
 #temperature,
 #windSpeed,

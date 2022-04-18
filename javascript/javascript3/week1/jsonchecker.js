@@ -7,7 +7,6 @@ console.log(myJesonFile);
 console.log(JSON.parse(myJesonFile));
 
 //Find a cool api:
-let imagedataGlobal = {};
 document
   .getElementById("inputButtonId")
   .addEventListener("click", function (event) {

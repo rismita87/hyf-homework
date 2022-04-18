@@ -1,4 +1,3 @@
-const body = document.querySelector("body");
 let imagedataGlobal = {};
 document
   .getElementById("giphySearchButton")
