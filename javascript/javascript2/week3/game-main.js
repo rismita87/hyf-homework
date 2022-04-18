@@ -1,29 +1,31 @@
 //The fastest presser in this realm
 const body = document.querySelector("body");
-
+const defaultString = "";
+const defaultURLInitializer = "url('')";
 let sCount = 0; // s key pressure counter
 let lCount = 0; // l key pressure counter
 let inputAllowed = 1; // a counter initialised to stop the key-press counting once someone wins
 let gameTime = 0;
 let interval = 0;
-document
-  .getElementById("gameStartButton")
-  .addEventListener("click", function (event) {
-    inputAllowed = 0;
+let startButton = document.getElementById("gameStartButton");
+startButton.addEventListener("click", function (event) {
+  inputAllowed = 0;
 
-    // to reset back everything to initial position after every click of start button
-    document.getElementById("sInputId").innerHTML = "";
-    document.getElementById("lInputId").innerHTML = "";
-    document.getElementById("resultPara").innerHTML = "";
-    document.getElementById("lBlock").style.backgroundImage = "url('')";
-    document.getElementById("sBlock").style.backgroundImage = "url('')";
+  // to reset back everything to initial position after every click of start button
+  document.getElementById("sInputId").innerHTML = defaultString;
+  document.getElementById("lInputId").innerHTML = defaultString;
+  document.getElementById("resultPara").innerHTML = defaultString;
+  document.getElementById("lBlock").style.backgroundImage =
+    defaultURLInitializer;
+  document.getElementById("sBlock").style.backgroundImage =
+    defaultURLInitializer;
 
-    gameTime = document.getElementById("gameInputId").value;
-    interval = gameTime;
-    setTimeout(() => {
-      endGameAction();
-    }, gameTime * 1000);
-  });
+  gameTime = document.getElementById("gameInputId").value;
+  interval = gameTime;
+  setTimeout(() => {
+    endGameAction();
+  }, gameTime * 1000);
+});
 document.body.addEventListener("keypress", function (event) {
   if (event.key === "s" && inputAllowed === 0) {
     sCount = sCount + 1;
@@ -66,11 +68,11 @@ function endGameAction() {
   lCount = 0;
 }
 
-var x = setInterval(function () {
-  console.log(interval);
+let x = setInterval(function () {
   if (interval > 0) {
     interval = Math.floor(interval - 1 / 10);
-    document.getElementById("countDown").innerHTML =
-      "<b>Countdown: </b>" + interval + " sec(s)";
+    document.getElementById(
+      "countDown"
+    ).innerHTML = `<b>Countdown: </b> ${interval}  sec(s)`;
   }
 }, 1000);
