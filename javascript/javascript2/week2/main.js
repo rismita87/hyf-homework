@@ -1,19 +1,37 @@
-console.log("Script loaded");
-
 const products = getAvailableProducts();
 const productsUl = document.querySelector("section.products ul");
-console.log(productsUl);
+let filteredProducts = products;
+//to set defaultvalues
+const defaultFilter = {
+  initialLetter: "",
+  maxPrice: 200000000,
+  maxRating: 100,
+};
+
+let filter = {
+  initialLetter: "",
+  maxPrice: 200000000,
+  maxRating: 100,
+};
+
+function getFilteredProducts(filter, products) {
+  const filteredProd = products.filter(
+    (product) =>
+      product.name.toLowerCase().startsWith(filter.initialLetter) &&
+      product.price <= filter.maxPrice &&
+      product.rating < filter.maxRating
+  );
+  console.log(JSON.stringify(filteredProd));
+  return filteredProd;
+}
 
 function renderProducts(products) {
-  console.log(products);
   products.forEach((product) => {
     const li = document.createElement("li");
-
     let shipsToHTML = "";
     // product.shipsTo.forEach(
     //   (country) => (shipsToHTML += `<li>${country}</li>`)
     // );
-
     li.innerHTML = `
             <ul>
                 <li>${product.name}</li>
@@ -22,12 +40,13 @@ function renderProducts(products) {
                 <ul class="ships-to">${shipsToHTML}</ul>
             </ul>
         `;
-    //console.log(li.innerHTML);
-
     productsUl.appendChild(li);
   });
 }
-console.log(products);
+//To render products with initial
+window.addEventListener("load", (event) => {
+  renderProducts(filteredProducts);
+});
 
 //To filter product based on product name
 document
@@ -38,12 +57,14 @@ function myFunctionForProductName() {
   let inputValue = document.getElementById("productSelectionInputId").value;
   if (inputValue.length > 0) {
     productsUl.innerHTML = "";
-    const filteredproducts = products.filter((product) =>
-      product.name.toLowerCase().startsWith(inputValue)
-    );
-    renderProducts(filteredproducts);
+    filter.initialLetter = inputValue.toLowerCase();
+    const filteredProducts = getFilteredProducts(filter, products);
+    renderProducts(filteredProducts);
   } else {
+    filter.initialLetter = defaultFilter.initialLetter;
     productsUl.innerHTML = "";
+    const filteredProducts = getFilteredProducts(filter, products);
+    renderProducts(filteredProducts);
   }
 }
 
@@ -56,12 +77,14 @@ function myFunctionForPriceLimit() {
   let inputPriceValue = document.getElementById("maximumPriceLimitId").value;
   if (inputPriceValue > 0) {
     productsUl.innerHTML = "";
-    const filteredProductsByPrice = products.filter(
-      (product) => product.price <= inputPriceValue
-    );
-    renderProducts(filteredProductsByPrice);
+    filter.maxPrice = inputPriceValue;
+    const filteredProducts = getFilteredProducts(filter, products);
+    renderProducts(filteredProducts);
   } else {
+    filter.maxPrice = defaultFilter.maxPrice;
     productsUl.innerHTML = "";
+    const filteredProducts = getFilteredProducts(filter, products);
+    renderProducts(filteredProducts);
   }
 }
 //To filter product based on maximum rating
@@ -73,11 +96,13 @@ function myFunctionForProductRating() {
   let inputRatingValue = document.getElementById("start").value;
   if (inputRatingValue > 0) {
     productsUl.innerHTML = "";
-    const filteredproductsByRating = products.filter(
-      (product) => product.rating < inputRatingValue
-    );
-    renderProducts(filteredproductsByRating);
+    filter.maxRating = inputRatingValue;
+    const filteredProducts = getFilteredProducts(filter, products);
+    renderProducts(filteredProducts);
   } else {
+    filter.maxRating = defaultFilter.maxRating;
     productsUl.innerHTML = "";
+    const filteredProducts = getFilteredProducts(filter, products);
+    renderProducts(filteredProducts);
   }
 }
