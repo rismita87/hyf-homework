@@ -1,6 +1,6 @@
 //Getting into promises
 
-let promiseAll = Promise.all([
+const promiseAll = Promise.all([
   fetch(
     " https://api.github.com/search/repositories?q=user:SvitlanaBurlaka"
   ).then((response) => response.json()),

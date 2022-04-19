@@ -5,20 +5,15 @@ class Product {
     this.name = name;
     this.price = price;
   }
+
   convertToCurrency(currency) {
-    switch (currency) {
-      case "dollars":
-        return "$" + this.price * 0.15;
-
-      case "INR":
-        return this.price * 11.33 + " INR ";
-
-      case "euros":
-        return this.price * 0.13 + " EUR";
-
-      default:
-        return this.price + " DKK";
-    }
+    fetch(
+      `https://api.exchangerate.host/convert?from=DKK&to=${currency}&amount=${this.price}`
+    )
+      .then((response) => response.json())
+      .then((responseData) => {
+        console.log(currency + `:` + responseData.result);
+      });
   }
 }
 class ShoppingCart {
@@ -122,7 +117,4 @@ console.log(shoppingCart);
 console.log(shoppingCart.searchProduct("iPhone"));
 console.log(shoppingCart.searchProduct("watch"));
 const phone = new Product("plant", 50);
-console.log(phone.convertToCurrency("dollars"));
-console.log(phone.convertToCurrency("INR"));
-console.log(phone.convertToCurrency("euros"));
-console.log(phone.convertToCurrency("taka"));
+phone.convertToCurrency("INR");

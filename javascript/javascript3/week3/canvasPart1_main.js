@@ -2,13 +2,21 @@
 const body = document.querySelector("body");
 const myCanvasToDrawCircle = document.getElementById("canvasId");
 const ctx = myCanvasToDrawCircle.getContext("2d");
+ctx.canvas.width = window.innerWidth;
+ctx.canvas.height = window.innerHeight;
 class Circle {
   constructor(x, y, r, startAngle, endAngle, fillColor) {
-    ctx.beginPath();
-    ctx.arc(x, y, r, startAngle, endAngle);
-    ctx.fillStyle = fillColor;
+    this.x = x;
+    this.y = y;
+    this.radius = r;
+    this.startAngle = startAngle;
+    this.endAngle = endAngle;
+    this.fillColor = fillColor;
   }
   draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.radius, this.startAngle, this.endAngle);
+    ctx.fillStyle = this.fillColor;
     ctx.stroke();
     ctx.fill();
   }
@@ -16,9 +24,9 @@ class Circle {
 
 function circle() {
   const randomColour = "#" + Math.floor(Math.random() * 16777215).toString(16);
-  const randomX = Math.floor(Math.random() * 300);
-  const randomY = Math.floor(Math.random() * 200);
-  const randomR = Math.floor(Math.random() * 25);
+  const randomX = Math.floor(Math.random() * 1400);
+  const randomY = Math.floor(Math.random() * 900);
+  const randomR = Math.floor(Math.random() * 30);
   let circle = new Circle(
     randomX,
     randomY,
@@ -30,6 +38,10 @@ function circle() {
   circle.draw();
 }
 
-setInterval(() => {
+let timerId = setInterval(() => {
   circle();
 }, 100);
+setTimeout(() => {
+  clearInterval(timerId);
+  alert("stop");
+}, 10000);
