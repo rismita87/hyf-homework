@@ -1,10 +1,10 @@
 import "./App.css";
 import React from "react";
-import ToDoListComp from "./components/ToDoList";
+import ToDoList from "./components/ToDoList";
 import toDoList from "./data/toDoList";
-import SearchComp from "./components/Search";
+import Search from "./components/Search";
 import AddToDo from "./components/AddToDo";
-import WatchCountComp from "./components/WatchCount";
+import WatchCount from "./components/WatchCount";
 
 function App() {
   //here two useState(toDoList) are set because once the search is set the
@@ -14,63 +14,66 @@ function App() {
   const [filterToDoList, setFilterToDoList] = React.useState(toDoList);
   const [fullToDoList, setFullToDoList] = React.useState(toDoList);
 
+  const onFilteredToDoListChange = (text) => {
+    if (text) {
+      setFilterToDoList(
+        filterToDoList.filter((tododata) =>
+          tododata.description.toLowerCase().includes(text.toLowerCase())
+        )
+      );
+    } else {
+      setFilterToDoList(fullToDoList);
+    }
+  };
+
+  const onAddTodoList = (task, time) => {
+    const newId = parseInt(fullToDoList.length) + toDoList.length;
+    const newObj = {
+      id: "",
+      description: "",
+      deadline: "",
+      taskCompletionStatus: "",
+    };
+
+    newObj.id = (newId + 1).toString();
+    newObj.description = task.value;
+    newObj.deadline = time.value;
+    newObj.taskCompletionStatus = false;
+    setFullToDoList([...fullToDoList, newObj]);
+    setFilterToDoList([...fullToDoList, newObj]);
+  };
+
+  const onChangeCheckBox = (text) => {
+    fullToDoList.forEach((element) => {
+      if (element.id === text) {
+        element.taskCompletionStatus =
+          element.taskCompletionStatus === true ? false : true;
+      }
+    });
+    setFilterToDoList([...fullToDoList]);
+    setFullToDoList([...fullToDoList]);
+  };
+
+  const onDeleteItem = (text) => {
+    const newFullToDoList = fullToDoList.filter(
+      (element) => element.id !== text
+    );
+    setFilterToDoList([...newFullToDoList]);
+    setFullToDoList([...newFullToDoList]);
+  };
+
   return (
     <div className="App">
-      <WatchCountComp />
+      <WatchCount />
 
-      <SearchComp
-        onFilteredToDoListChange={(text) => {
-          if (text) {
-            setFilterToDoList(
-              filterToDoList.filter((tododata) =>
-                tododata.description.toLowerCase().includes(text.toLowerCase())
-              )
-            );
-          } else {
-            setFilterToDoList(fullToDoList);
-          }
-        }}
-      />
+      <Search onFilteredToDoListChange={onFilteredToDoListChange} />
 
-      <AddToDo
-        onAddTodoList={(task, time) => {
-          const newId = fullToDoList.length;
-          const newObj = {
-            id: "",
-            description: "",
-            deadline: "",
-            taskCompletionStatus: "",
-          };
-          newObj.id = (newId + 1).toString();
-          newObj.description = task.value;
-          newObj.deadline = time.value;
-          newObj.taskCompletionStatus = "false";
-          setFullToDoList([...fullToDoList, newObj]);
-          setFilterToDoList([...fullToDoList, newObj]);
-        }}
-      />
+      <AddToDo onAddTodoList={onAddTodoList} />
 
-      <ToDoListComp
-        ds={filterToDoList}
-        onChangeCheckBox={(text) => {
-          fullToDoList.forEach((element) => {
-            if (element.id === text) {
-              element.taskCompletionStatus =
-                element.taskCompletionStatus === "true" ? "false" : "true";
-            }
-          });
-
-          console.log(fullToDoList);
-          setFilterToDoList([...fullToDoList]);
-          setFullToDoList([...fullToDoList]);
-        }}
-        onDeleteItem={(text) => {
-          let newFullToDoList = fullToDoList.filter(
-            (element) => element.id !== text
-          );
-          setFilterToDoList([...newFullToDoList]);
-          setFullToDoList([...newFullToDoList]);
-        }}
+      <ToDoList
+        toDoListDataSource={filterToDoList}
+        onChangeCheckBox={onChangeCheckBox}
+        onDeleteItem={onDeleteItem}
       />
     </div>
   );

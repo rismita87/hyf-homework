@@ -1,25 +1,22 @@
-import TodoRows from "./ToDoRows";
+import ToDoRow from "./ToDoRow";
 
 function ToDoList(props) {
-  const toDoListArray = [];
-  console.log(props.ds);
-  if (props.ds.length === 0) {
+  if (props.toDoListDataSource.length === 0) {
     return <p> No items</p>;
-  } else {
-    props.ds.forEach((element) => {
-      toDoListArray.push(
-        <TodoRows
-          description={element.description}
-          deadline={element.deadline}
-          key={element.id}
-          elementId={element.id}
-          taskCompletionStatus={element.taskCompletionStatus}
-          changeCheckBox={props.onChangeCheckBox}
-          deleteItem={props.onDeleteItem}
-        />
-      );
-    });
   }
+  const toDoListArray = props.toDoListDataSource.map((element) => {
+    return (
+      <ToDoRow
+        description={element.description}
+        deadline={element.deadline}
+        key={element.id}
+        elementId={element.id}
+        taskCompletionStatus={element.taskCompletionStatus}
+        changeCheckBox={props.onChangeCheckBox}
+        deleteItem={props.onDeleteItem}
+      />
+    );
+  });
 
   return (
     <div className="toDoList">
