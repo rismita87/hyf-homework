@@ -1,4 +1,4 @@
-function todoRows(props) {
+function TodoRow(props) {
   return (
     <tr>
       <td>{props.description}</td>
@@ -7,4 +7,4 @@ function todoRows(props) {
   );
 }
 
-export default todoRows;
+export default TodoRow;

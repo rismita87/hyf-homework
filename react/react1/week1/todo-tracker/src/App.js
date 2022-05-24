@@ -1,24 +1,25 @@
 import "./App.css";
 import React from "react";
-import ToDoListComp from "./components/ToDoList";
+import ToDoList from "./components/ToDoList";
 import toDoList from "./data/toDoList";
-import SearchComp from "./components/Search";
+import Search from "./components/Search";
 
 function App() {
   const [filterToDoList, setFilterToDoList] = React.useState(toDoList);
 
+  const onFilteredToDoListChange = (text) => {
+    setFilterToDoList(
+      toDoList.filter((tododata) =>
+        tododata.description.toLowerCase().includes(text.toLowerCase())
+      )
+    );
+  };
+
   return (
     <div className="App">
-      <SearchComp
-        onFilteredToDoListChange={(text) =>
-          setFilterToDoList(
-            toDoList.filter((tododata) =>
-              tododata.description.toLowerCase().includes(text.toLowerCase())
-            )
-          )
-        }
-      />
-      <ToDoListComp ds={filterToDoList} />
+      <Search onFilteredToDoListChange={onFilteredToDoListChange} />
+
+      <ToDoList toDoListdataSource={filterToDoList} />
     </div>
   );
 }

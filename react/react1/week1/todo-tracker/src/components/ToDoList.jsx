@@ -1,17 +1,15 @@
-import TodoRows from "./ToDoRows";
+import TodoRow from "./ToDoRow";
 
 function ToDoList(props) {
-  const toDoListArray = [];
-  props.ds.forEach((element) => {
-    toDoListArray.push(
-      <TodoRows
+  const toDoListArray = props.toDoListdataSource.map((element) => {
+    return (
+      <TodoRow
         description={element.description}
         deadline={element.deadline}
         key={element.id}
       />
     );
   });
-
   return (
     <div className="toDoList">
       <h1 className="h1">ToDo List</h1>
@@ -22,9 +20,7 @@ function ToDoList(props) {
             <th>Deadline</th>
           </tr>
         </thead>
-        <tbody className="tableBody" key={toDoListArray}>
-          {toDoListArray}
-        </tbody>
+        <tbody className="tableBody">{toDoListArray}</tbody>
       </table>
     </div>
   );
