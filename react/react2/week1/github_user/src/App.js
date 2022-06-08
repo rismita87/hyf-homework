@@ -1,5 +1,5 @@
 import "./App.css";
-import React from "react";
+import React, { useState } from "react";
 import UserInputs from "./Components/UserInputs";
 import APIOutput from "./Components/APIOutput";
 import {
@@ -8,8 +8,8 @@ import {
 } from "./Components/Contexts";
 
 function App() {
-  const [searchInputText, setSearchInputText] = React.useState();
-  const [seachInputState, setSearchInputState] = React.useState(false);
+  const [searchInputText, setSearchInputText] = useState();
+  const [seachInputState, setSearchInputState] = useState(false);
   const searchInputProcess = (text) => {
     setSearchInputText(text);
   };

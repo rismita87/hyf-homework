@@ -3,15 +3,15 @@ import UserList from "./UserList";
 import Blocker from "./Blocker";
 import { SearchInputContext } from "./Contexts";
 export default function APIOutput() {
-  const [data, setData] = useState();
-  const [isLoaded, setIsLoaded] = useState();
-  const [errorData, setErrorData] = useState();
+  const [data, setData] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(null);
+  const [errorData, setErrorData] = useState(null);
   const inputText = useContext(SearchInputContext);
   const loadData = async () => {
     let res = [];
-    setErrorData();
-    setData();
-    setIsLoaded();
+    setErrorData(null);
+    setData(null);
+    setIsLoaded(null);
     if (inputText) {
       setIsLoaded(true);
       res = await fetch(`https://api.github.com/search/users?q=${inputText}`);
