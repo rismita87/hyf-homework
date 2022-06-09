@@ -2,10 +2,10 @@ import TodoRows from "./ToDoRows";
 
 function ToDoList(props) {
   const toDoListArray = [];
-  if (props.ds.length === 0) {
+  if (props.toDoListDataSource.length === 0) {
     return <p> No items</p>;
   } else {
-    props.ds.forEach((element) => {
+    props.toDoListDataSource.forEach((element) => {
       toDoListArray.push(
         <TodoRows
           description={element.description}

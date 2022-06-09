@@ -13,6 +13,76 @@ function App() {
   const [filterToDoList, setFilterToDoList] = React.useState([]);
   const [fullToDoList, setFullToDoList] = React.useState([]);
   const [arrLength, setArrLength] = React.useState();
+
+  const onFilteredToDoListChange = (text) => {
+    if (text) {
+      setFilterToDoList(
+        filterToDoList.filter((tododata) =>
+          tododata.description.toLowerCase().includes(text.toLowerCase())
+        )
+      );
+    } else {
+      setFilterToDoList(fullToDoList);
+    }
+  };
+  const onAddTodoList = (task, time) => {
+    const newId = parseInt(fullToDoList.length) + arrLength;
+    const newObj = {
+      id: "",
+      description: "",
+      deadline: "",
+      taskCompletionStatus: "",
+    };
+    newObj.id = (newId + 1).toString();
+    newObj.description = task.value;
+    newObj.deadline = time.value;
+    newObj.taskCompletionStatus = false;
+    setFullToDoList([...fullToDoList, newObj]);
+    setFilterToDoList([...fullToDoList, newObj]);
+  };
+  const onChangeCheckBox = (text) => {
+    fullToDoList.forEach((element) => {
+      if (parseInt(element.id) === parseInt(text)) {
+        element.taskCompletionStatus =
+          element.taskCompletionStatus === true ? false : true;
+      }
+    });
+    setFilterToDoList([...fullToDoList]);
+    setFullToDoList([...fullToDoList]);
+  };
+  const onDeleteItem = (text) => {
+    let newFullToDoList = fullToDoList.filter((element) => element.id !== text);
+    setFilterToDoList([...newFullToDoList]);
+    setFullToDoList([...newFullToDoList]);
+  };
+  const onUpdateItem = (text) => {
+    if (document.getElementById(text + "button").innerText === "Edit") {
+      fullToDoList.forEach((element) => {
+        if (parseInt(element.id) === parseInt(text)) {
+          document.getElementById(text + "button").innerText = "Upload";
+          document.getElementById(element.id + "description").innerHTML =
+            "<input type=text id=" + element.id + "task></input>";
+          document.getElementById(element.id + "deadline").innerHTML =
+            "<input type='date' id=" + element.id + "date></input>";
+        }
+      });
+      setFilterToDoList([...fullToDoList]);
+      setFullToDoList([...fullToDoList]);
+    } else if (
+      document.getElementById(text + "button").innerText === "Upload"
+    ) {
+      fullToDoList.forEach((element) => {
+        if (parseInt(element.id) === parseInt(text)) {
+          document.getElementById(text + "button").innerText = "Edit";
+          element.description = document.getElementById(text + "task").value;
+          element.deadline = document.getElementById(text + "date").value;
+        }
+      });
+      setFilterToDoList([...fullToDoList]);
+      setFullToDoList([...fullToDoList]);
+    }
+  };
+
   useEffect(() => {
     fetch(
       "https://gist.githubusercontent.com/benna100/391eee7a119b50bd2c5960ab51622532/raw"
@@ -21,7 +91,7 @@ function App() {
       .then(
         (data) => {
           setArrLength(data.length);
-          data.forEach((e) => (e.taskCompletionStatus = "false"));
+          data.forEach((e) => (e.taskCompletionStatus = false));
           setFilterToDoList(data);
           setFullToDoList(data);
         },
@@ -35,85 +105,14 @@ function App() {
     <div className="App">
       <WatchCount />
 
-      <Search
-        onFilteredToDoListChange={(text) => {
-          if (text) {
-            setFilterToDoList(
-              filterToDoList.filter((tododata) =>
-                tododata.description.toLowerCase().includes(text.toLowerCase())
-              )
-            );
-          } else {
-            setFilterToDoList(fullToDoList);
-          }
-        }}
-      />
+      <Search onFilteredToDoListChange={onFilteredToDoListChange} />
 
-      <AddToDo
-        onAddTodoList={(task, time) => {
-          const newId = parseInt(fullToDoList.length) + arrLength;
-          const newObj = {
-            id: "",
-            description: "",
-            deadline: "",
-            taskCompletionStatus: "",
-          };
-          newObj.id = (newId + 1).toString();
-          newObj.description = task.value;
-          newObj.deadline = time.value;
-          newObj.taskCompletionStatus = "false";
-          setFullToDoList([...fullToDoList, newObj]);
-          setFilterToDoList([...fullToDoList, newObj]);
-        }}
-      />
+      <AddToDo onAddTodoList={onAddTodoList} />
       <ToDoList
-        ds={filterToDoList}
-        onChangeCheckBox={(text) => {
-          fullToDoList.forEach((element) => {
-            if (parseInt(element.id) === parseInt(text)) {
-              element.taskCompletionStatus =
-                element.taskCompletionStatus === "true" ? "false" : "true";
-            }
-          });
-          setFilterToDoList([...fullToDoList]);
-          setFullToDoList([...fullToDoList]);
-        }}
-        onDeleteItem={(text) => {
-          let newFullToDoList = fullToDoList.filter(
-            (element) => element.id !== text
-          );
-          setFilterToDoList([...newFullToDoList]);
-          setFullToDoList([...newFullToDoList]);
-        }}
-        onUpdateItem={(text) => {
-          if (document.getElementById(text + "button").innerText === "Edit") {
-            fullToDoList.forEach((element) => {
-              if (parseInt(element.id) === parseInt(text)) {
-                document.getElementById(text + "button").innerText = "Upload";
-                document.getElementById(element.id + "description").innerHTML =
-                  "<input type=text id=" + element.id + "task></input>";
-                document.getElementById(element.id + "deadline").innerHTML =
-                  "<input type='date' id=" + element.id + "date></input>";
-              }
-            });
-            setFilterToDoList([...fullToDoList]);
-            setFullToDoList([...fullToDoList]);
-          } else if (
-            document.getElementById(text + "button").innerText === "Upload"
-          ) {
-            fullToDoList.forEach((element) => {
-              if (parseInt(element.id) === parseInt(text)) {
-                document.getElementById(text + "button").innerText = "Edit";
-                element.description = document.getElementById(
-                  text + "task"
-                ).value;
-                element.deadline = document.getElementById(text + "date").value;
-              }
-            });
-            setFilterToDoList([...fullToDoList]);
-            setFullToDoList([...fullToDoList]);
-          }
-        }}
+        toDoListDataSource={filterToDoList}
+        onChangeCheckBox={onChangeCheckBox}
+        onDeleteItem={onDeleteItem}
+        onUpdateItem={onUpdateItem}
       />
     </div>
   );
