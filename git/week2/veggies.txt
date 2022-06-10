@@ -1,5 +1,7 @@
 potato
 tomato
-carrot
+onion
 broccoli
 green beans
+cabbage
+beet
