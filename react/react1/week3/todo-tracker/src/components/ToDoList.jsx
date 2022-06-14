@@ -15,7 +15,9 @@ function ToDoList(props) {
           taskCompletionStatus={element.taskCompletionStatus}
           changeCheckBox={props.onChangeCheckBox}
           deleteItem={props.onDeleteItem}
-          updateItem={props.onUpdateItem}
+          fullTodoList={props.toDoListDataSource}
+          toSetButtonText={props.setButtonText}
+          onUpdateItem={props.onUpdateItem}
         />
       );
     });

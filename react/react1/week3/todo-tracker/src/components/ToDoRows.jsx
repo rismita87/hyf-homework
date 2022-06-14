@@ -1,39 +1,68 @@
-function todoRows(props) {
-  if (props.taskCompletionStatus === "true") {
-    console.log(props.description);
+import React from "react";
+
+function TodoRows(props) {
+  const [buttonValue, setButtonValue] = React.useState("Update");
+  const [description, setDescription] = React.useState(props.description);
+  const [deadline, setDeadline] = React.useState(props.deadline);
+  const [textInput, setTextInput] = React.useState(props.description);
+  const [deadlineInput, setDeadlineInput] = React.useState(props.deadline);
+
+  const updateDescription =
+    buttonValue === "Update" ? (
+      <input
+        type="text"
+        onChange={(e) =>
+          setTextInput(
+            e.target.value.length > 0 ? e.target.value : props.description
+          )
+        }
+      ></input>
+    ) : (
+      textInput
+    );
+
+  const updateDeadline =
+    buttonValue === "Update" ? (
+      <input
+        type="date"
+        onChange={(e) => setDeadlineInput(e.target.value)}
+      ></input>
+    ) : (
+      deadlineInput
+    );
+
+  if (props.taskCompletionStatus === true) {
     return (
       <tr>
         <td>
-          <s>{props.description}</s>
+          <s>{description}</s>
         </td>
         <td>
-          <s>{props.deadline}</s>
+          <s>{deadline}</s>
         </td>
         <td>
           <input
             type="checkbox"
             value={props.elementId}
-            onChange={(e) => props.changeCheckBox(e.target.value)}
+            defaultChecked="checked"
+            onChange={(e) => {
+              e.target.checked = props.changeCheckBox(e.target.value);
+            }}
           />
         </td>
         <td>
           <button>delete..</button>
         </td>
         <td>
-          <button
-            value={props.elementId}
-            onClick={(e) => props.updateItem(e.target.value)}
-          >
-            Edit
-          </button>
+          <button>Update</button>
         </td>
       </tr>
     );
   } else {
     return (
       <tr>
-        <td id={props.elementId + "description"}>{props.description}</td>
-        <td id={props.elementId + "deadline"}>{props.deadline}</td>
+        <td>{description}</td>
+        <td>{deadline}</td>
         <td>
           <input
             type="checkbox"
@@ -48,10 +77,22 @@ function todoRows(props) {
         </td>
         <td>
           <button
-            id={props.elementId + "button"}
-            onClick={() => props.updateItem(props.elementId)}
+            onClick={(e) => {
+              setDescription(updateDescription);
+              setDeadline(updateDeadline);
+              console.log(e.target.textContent);
+              setButtonValue(
+                e.target.textContent === "Update"
+                  ? "Upload"
+                  : props.onUpdateItem(
+                      props.elementId,
+                      updateDescription,
+                      updateDeadline
+                    )
+              );
+            }}
           >
-            Edit
+            {buttonValue}
           </button>
         </td>
       </tr>
@@ -59,4 +100,4 @@ function todoRows(props) {
   }
 }
 
-export default todoRows;
+export default TodoRows;
